@@ -1,0 +1,53 @@
+//UVA10019
+//Funny Encryption Method
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+int change(int x)
+{
+	int b = 0; //出現1的次數
+	
+	while(x != 0)
+	{
+		if (x%2 == 1)
+		{
+			b++;
+			x = x /2;
+		}
+		else
+		{
+			x = x /2 ;
+		}
+	}
+	
+	return b;
+}
+
+int main()
+{
+	int x = 0;// 測資個數
+	char y[6] = {0};//測資
+	int b1 = 0;//二進位1個數
+	int b2 = 0;//十六進位1個數
+	scanf("%d",&x);
+	
+	while(x--)
+	{
+		int dem = 0;
+		int hex = 0;
+		scanf("%s",y);
+		sscanf(y,"%d",&dem);
+		sscanf(y,"%x",&hex);
+		
+		b1 = change(dem);
+		b2 = change(hex);
+		
+		printf("%d %d",b1,b2);
+		printf("\n");
+		
+	}
+
+
+	return 0;
+}
