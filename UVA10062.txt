@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#pragma warning(disable:4996)
+#define MAX 1001
+
+int main()
+{
+	char input[MAX] = {0};
+	int num[MAX] = {0};//次數
+	int temp = 0;
+	int c = 1;
+	int d = 0;
+	int max = 0;
+	
+	while(gets(input))
+	{
+		start://後面會說
+		for(int i = 0 ; i <= MAX ; i++)
+		{
+		if(input[i] == 0)
+		{}
+		else
+		{
+			num[input[i]]++;
+		}
+		//printf("%d %d\n",input[i],num[i]);
+		}
+		
+
+			for(int b = 0 ; b < 1000-1 ; b++) //找最大頻率
+			{
+				if (num[b] > max)
+				{
+					max = num[b];
+				}
+				else
+				{
+				}
+			}		
+		//printf("%d\n\n",max);
+		while(c <= max)
+		{
+			for(int i = 1000; i > 0 ; i --) //如果相同從最大ASCII去列 所以從後面找起
+			{
+				if(num[i] != 0 && num[i] == c)
+				{
+					printf("%d %d\n",i,num[i]);		
+				}
+				else
+				{}
+			}
+			c++;
+		}
+		
+		memset(num,0,sizeof(num));
+		memset(input,0,sizeof(input));
+		c = 0;
+		/*這裡有個問題是最後一筆測資列出時不用換行 所以直接寫換行會失敗
+		暫時只想到用goto這方法去寫 如果還有測資就讀去 並列出一個換行*/
+		while(gets(input)) 
+		{
+		printf("\n");
+		goto start;
+		}
+	}
+		
+	return 0;
+}
