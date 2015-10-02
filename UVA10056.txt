@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#pragma warning(disable:4996)
+
+int main()
+{
+	int s = 0;
+	float n = 0;
+	float p = 0;
+	float i = 0;
+	float np = 0; //失敗機率
+	float ansp = 0;//答案
+	float pn = 0; //循環機率
+	float cof = 0; //係數
+	
+	scanf("%d",&s);
+	while(s--)
+	{
+		scanf("%f",&n);
+		scanf("%f",&p);
+		scanf("%f",&i);
+		np = 1 - p; 
+		cof = i-1;
+		while( pow(np,cof) * p  > 0.000001)
+		{
+		pn = pow(np,cof) * p ;
+		
+		ansp += pn;
+		cof += n;
+		
+		}
+		printf("%.4f\n",ansp);
+		ansp = 0;
+		cof = 0;
+		
+	}
+	
+}
