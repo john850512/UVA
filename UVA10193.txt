@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#pragma warning (disable:4996)
+/*注意一下這樣寫會timelimit 想想有沒有更好的寫法*/
+int main()
+{
+	int num = 0;
+	char s1[31] = {0};
+	char s2[31] = {0};
+	int time = 1;
+	
+	scanf("%d",&num);
+	while(getchar() != '\n')
+	{}
+	while(num--)
+	{
+		long S1 = 0;
+		long S2 = 0;
+		gets(s1);
+		gets(s2);
+		int lens1 = strlen(s1);
+		int lens2 = strlen(s2);
+		bool ans = false;
+		//printf("%s\n  %s \n",s1,s2);
+		for(int i = 0 ; i < lens1 ; ++i)
+		{
+			S1 += pow(2.0,i) * (s1[(lens1 - i)-1]-'0');
+		}
+		for(int i = 0 ; i < lens2 ; ++i)
+		{
+			S2 += pow(2.0,i) * (s2[(lens2 - i)-1]-'0');
+		}	
+		
+		long min = (S1 <= S2 ? S1 : S2);
+		
+		//printf("%ld\n",min);
+		for(long i = 2 ; i <= min ; ++i)
+		{
+			if(S1 % i == 0 && S2 % i == 0)
+			{
+				printf("Pair #%d: All you need is love!\n",time++);
+				ans = true;
+				break;
+			}
+		}		
+		if(ans == true)
+		{}
+		else
+		{
+			printf("Pair #%d: Love is not all you need!\n",time++);
+		}
+	
+	}
+
+}

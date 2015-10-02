@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#pragma warning(disable:4996)
+#define EPS 1e-8
+//x 值最小時體積會有最大值 EPS為最小精準度
+int main()
+{
+	double L,W;
+	while(~scanf("%lf %lf",&L,&W))
+	{
+		double max = 0;
+		max = ((W + L) - sqrt( (W + L)* (W + L)- 3 *(W * L))) / 6;
+
+		printf("%.3lf 0.000 %.3lf\n",max,(L < W ?  L / 2.0 : W / 2.0)+EPS);
+	}
+
+
+
+}
