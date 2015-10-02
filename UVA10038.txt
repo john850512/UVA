@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+int main()
+{
+	int a = 0;//測資個數 
+	int k = 0;//紀錄a 
+	int n = 0;
+	int seq[3000] = {0};//測資
+	int cor[3000] ={0}; //確認是否出現該數字	
+	
+	int i = 0;
+	int x = 1;
+	
+	while(scanf("%d",&a)!= EOF)
+	{
+
+
+		k = a;
+		while(a--)
+		{
+			scanf("%d",&seq[n]);
+			n++;
+			
+		}
+		if(k == 1)
+		{
+			printf("Jolly\n");
+			goto jolly;
+		}
+		for(i = 0;i<n-1;i++)
+		{
+			cor[abs((seq[i])-(seq[i+1]))] = 1;
+		}
+		
+/*		for(i = 0; i<n-1;i++)
+		{
+			printf("%d",abs((seq[i])-(seq[i+1])));
+			printf("a %d\n",cor[i+1]);
+		}
+		*/
+		while(cor[x] == 1)
+		{
+			
+			if(x>=(k-1))
+			{
+				printf("Jolly\n");
+				goto jolly;
+			}
+			else
+			{
+			//	printf("b %d\n",cor[x]);
+				x++;
+				
+			}
+		}
+		printf("Not jolly\n");
+
+		jolly:
+		
+		
+		a = 0;
+		k = 0;
+		x = 1;
+		n = 0;
+		i = 0;
+		memset(seq,0,sizeof(seq));	
+		memset(cor,0,sizeof(cor));	
+
+	
+	}
+
+
+		
+			return 0;
+}
