@@ -1,0 +1,87 @@
+//Decode the Mad man 
+//CPE10425 UVA10222
+
+#include <ctype.h> 
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+	char c[] = {"123457890-=""qwertyuiop[]\\""asdfghjkl;'""zxcvbnm,./"}; // 需要\\ 來表示\ 否則無法編譯 
+	char input[256] = {0};
+	int n = 0;
+	int a = 0;
+
+	while(gets(input))
+	{	
+		
+	while(tolower(input[n]) != '\0')
+	{
+		while(tolower(input[n]) != c[a] )
+		{
+			a++;
+			if(tolower(input[n]) == ' ') //遇空格跳過此字元 找下一個 
+			{
+				n++;
+				a--;
+			}
+
+			else if(tolower(input[n]) == '\0')
+			{
+				goto end;
+
+			}
+		}
+		input[n] = c[(a-2)];
+		a = 0 ;
+		n++ ;
+		
+	}
+	end:
+	printf("%s\n",input);
+	n = 0;
+	
+	int i = 0;
+	for(i= 0;i<256;i++)
+	{
+		input[i]='\0';
+	}
+	
+	
+	
+	}
+	
+
+	
+	return 0;
+} 
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#pragma warning(disable:4996)
+int main()
+{
+	char std[] ="`1234567890-="
+				"qwertyuiop[]\\"
+				"asdfghjkl;'"
+				"zxcvbnm,./";
+	char input[1000] = {0};
+	while(gets(input))
+	{
+		for(int i = 0; i<1000 ; i++)
+		{
+			for(int b = 0 ; b < 47 ; b++)
+			{
+				if(toupper(input[i]) == toupper(std[b]))
+				{
+					//printf("%c %c %d\n",input[i],std[b-2],b);
+					input[i] =std[b-2];
+				}
+			}
+		}
+		printf("%s\n",input);	
+	}			
+
+	return 0;
+}*/

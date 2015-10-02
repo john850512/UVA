@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#pragma warning (disable:4996)
+#define max 3000
+int bignum[max];
+
+void bigfab( int n)
+{
+	for(int i = 0 ; i < max ; ++i)
+	{
+		bignum[i] = 0;
+	}
+	bignum[0] = 1;
+	int len = 1;
+	int ans = 0;
+	for(int i = 1 ; i <= n ; ++i)
+	{
+
+		for( int j = 0 ; j <= max ; ++j)
+		{
+			
+			bignum[j] *= i;
+		}
+		for( int j = 0 ; j < max ; ++j)//每乘一次就進位一次才不會爆
+		{
+			bignum[j+1] += bignum[j] / 10;
+			if(bignum[j+1] > 0 && j + 1 > len) len++;//判斷是否是最大長度
+			bignum[j] %= 10;	
+		}
+	}
+	for( int i = len ; i >= 0 ; i--)
+	{
+		ans += bignum[i]; 
+		
+	}
+	printf("%d\n",ans);
+}
+
+int main()
+{
+	int n = 0;
+	while(~scanf("%d",&n))
+	{
+		bigfab(n);
+	}
+	return 0;
+}
